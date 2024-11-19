@@ -1,13 +1,12 @@
 import javax.swing.*;
 import java.awt.*;
 import java.io.*;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 import java.util.Random;
 
 public class VehicleServiceCenterGUI extends JFrame {
-    private List<CustomerInfo> customerList = new ArrayList<>();
-    private List<ServiceInfo> serviceList = new ArrayList<>();
+    private LinkedList<CustomerInfo> customerList = new LinkedList<>();
+    private LinkedList<ServiceInfo> serviceList = new LinkedList<>();
     private ServiceLaneQueue lane1 = new ServiceLaneQueue();
     private ServiceLaneQueue lane2 = new ServiceLaneQueue();
     private ServiceLaneQueue lane3 = new ServiceLaneQueue();
@@ -148,13 +147,32 @@ public class VehicleServiceCenterGUI extends JFrame {
                 String vehiclePlateNumber = parts[2];
                 String services = parts[3];
                 int serviceTotal=0;
-                customerList.add(new CustomerInfo(customerId, customerName, vehiclePlateNumber, serviceTotal));
+    
+                // Parse the services string and add the corresponding services to the CustomerInfo object
+                String[] serviceIds = services.split(" ");
+                CustomerInfo customerInfo = new CustomerInfo(customerId, customerName, vehiclePlateNumber, serviceTotal);
+                for (String serviceId : serviceIds) {
+                    // Assuming you have a method to get the ServiceInfo object by ID
+                    ServiceInfo serviceInfo = getServiceInfoById(serviceId);
+                    customerInfo.addService(serviceInfo);
+                }
+    
+                customerList.add(customerInfo);
             }
         } catch (IOException e) {
             JOptionPane.showMessageDialog(this, "Error reading CustomerList.txt: " + e.getMessage());
         }
     }
 
+    private ServiceInfo getServiceInfoById(String serviceId) {
+        for (ServiceInfo serviceInfo : serviceList) {
+            if (serviceInfo.getServiceId() == Integer.parseInt(serviceId)) {
+                return serviceInfo;
+            }
+        }
+        return null; // Return null if no service is found with the given ID
+    }
+    
     private void loadServicesFromFile(String fileName) {
         try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
             String line;
@@ -172,6 +190,7 @@ public class VehicleServiceCenterGUI extends JFrame {
             JOptionPane.showMessageDialog(this, "Error reading ServiceList.txt: " + e.getMessage());
         }
     }
+
 
     private void assignServicesToCustomers() {
     Random random = new Random();

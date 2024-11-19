@@ -71,5 +71,15 @@ class ServiceInfo {
     public int getServiceTotal() {
         return serviceTotal;
     }
+@Override
+public String toString() {
+    return "ServiceInfo{" +
+           "id=" + serviceId +
+           ", name='" + serviceType + '\'' +
+           ", price=" + serviceCost +
+           ", date='" + serviceDate + '\'' +
+           ", completionTime='" + estimatedCompletionTime + '\'' +
+           '}';
+}
     
 }
