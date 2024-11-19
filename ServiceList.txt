@@ -1,0 +1,6 @@
+101,Change oil filter,150,01/04/2024,Two hours
+102,Change engine oil,200,24/05/2024,Two hours
+103,Schedule maintenance,250,30/05/2024,Three hours
+104,Air filter,50,12/06/2024,One hour
+105,Tire rotation,100,23/06/2024,One hour
+106,Brake service,300,26/06/2024,Three hours

@@ -1,0 +1,25 @@
+#BlueJ class context
+comment0.target=VehicleServiceCenterGUI
+comment1.params=
+comment1.target=VehicleServiceCenterGUI()
+comment10.params=
+comment10.target=void\ completeTransaction()
+comment11.params=args
+comment11.target=void\ main(java.lang.String[])
+comment2.params=
+comment2.target=javax.swing.JPanel\ createCustomerPanel()
+comment3.params=
+comment3.target=javax.swing.JPanel\ createServiceLanePanel()
+comment4.params=
+comment4.target=javax.swing.JPanel\ createCompletedTransactionsPanel()
+comment5.params=fileName
+comment5.target=void\ loadCustomersFromFile(java.lang.String)
+comment6.params=fileName
+comment6.target=void\ loadServicesFromFile(java.lang.String)
+comment7.params=
+comment7.target=void\ assignServicesToCustomers()
+comment8.params=
+comment8.target=void\ addService()
+comment9.params=
+comment9.target=void\ removeService()
+numComments=12
